@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: weather-ai-assistant-backend
+    env: python
+    region: oregon # or your preferred region
+    plan: free # or starter/standard
+    branch: main
+    buildCommand: "./build.sh"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
